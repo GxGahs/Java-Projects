@@ -5,11 +5,20 @@ public class fuckJoey {
 	public static void main(String[] args) 
 	{
 		
-		Object[] options = {"binary to decimal","decimal to binary"};
-		int choice = JOptionPane.showOptionDialog(null,"What would you like to do today","Converter", JOptionPane.DEFAULT_OPTION, 3, null, options, options[0])
-				,decimalConv=0;
+		Object[] options = {"Binary","Decimal","Hexadecimal"};
+                Object[] options2 = {"Binary to decimal","Binary to hexadecimal"};
+                Object[] options3 = {"Decimal to binary","Decimal to hexadecimal"};
+                Object[] options4 = {"Hexadecimal to Decimal","Hexadecimal to binary"};
+		int choice1 = JOptionPane.showOptionDialog(null,"What would you like to do today","Converter", JOptionPane.DEFAULT_OPTION, 3, null, options, options[0])
+				,decimalConv=0,choice2=0;
+                if (choice1 == 0)
+                    choice2 = JOptionPane.showOptionDialog(null,"What would you like to convert to?","Converter", JOptionPane.DEFAULT_OPTION, 3, null, options2, options2[0]);
+		if (choice1 == 1)
+                    choice2 = JOptionPane.showOptionDialog(null,"What would you like to convert to?","Converter", JOptionPane.DEFAULT_OPTION, 3, null, options3, options3[0]);
+                if (choice1 == 2)
+                    choice2 = JOptionPane.showOptionDialog(null,"What would you like to convert to?","Converter", JOptionPane.DEFAULT_OPTION, 3, null, options4, options4[0]);
 //binary to decimal		
-		if (choice == 0)
+		if (choice1 == 0 && choice2 == 0)
 		{
 			String binary = JOptionPane.showInputDialog("Enter your binary number:");
 			
@@ -30,7 +39,7 @@ public class fuckJoey {
 		}		
 		
 //end binary to decimal		
-		if (choice == 1)
+		if (choice1 == 1 && choice2 == 0)
 		{
 			int decimal = Integer.parseInt(JOptionPane.showInputDialog("Enter your decimal number (less than 65536):"));
 			if (decimal > 65535)
@@ -62,7 +71,7 @@ public class fuckJoey {
 					binaryConv = binaryConv.substring(1, binaryConv.length());
 				} while (binaryConv.substring(0,1).equals("0"));
 			}
-			
+			int length = (int)Math.floor(binaryConv.length());
 				
 			JOptionPane.showMessageDialog(null, "Your number in decimal is:\n" + binaryConv);
 			}
