@@ -1,0 +1,80 @@
+
+package converterwithclasses;
+import javax.swing.JOptionPane;
+
+public class ConverterWithClasses
+{
+
+    public static void main(String[] args)
+    {
+        JOptionPane pane = new JOptionPane();
+        toDecimal toDec = new toDecimal();
+        toBinary toBin = new toBinary();
+        toHexadecimal toHex = new toHexadecimal();
+        
+        Object[] options = {"Binary","Decimal","Hexadecimal"};
+        Object[] options2 = {"Binary to decimal","Binary to hexadecimal"};
+        Object[] options3 = {"Decimal to binary","Decimal to hexadecimal"};
+        Object[] options4 = {"Hexadecimal to Decimal","Hexadecimal to binary"};
+        int choice1 = JOptionPane.showOptionDialog(null,"Welcome to the converer. What type\nof number will you start with?",
+                "Converter", JOptionPane.DEFAULT_OPTION, 3, null, options, options[0])
+                        ,choice2=0;
+        
+        if (choice1 == 0)
+            choice2 = JOptionPane.showOptionDialog(null,"What would you like to convert to?",
+                    "Converter", JOptionPane.DEFAULT_OPTION, 3, null, options2, options2[0]);
+        if (choice1 == 1)
+            choice2 = JOptionPane.showOptionDialog(null,"What would you like to convert to?",
+                    "Converter", JOptionPane.DEFAULT_OPTION, 3, null, options3, options3[0]);
+        if (choice1 == 2)
+            choice2 = JOptionPane.showOptionDialog(null,"What would you like to convert to?",
+                    "Converter", JOptionPane.DEFAULT_OPTION, 3, null, options4, options4[0]);
+        //System.out.println(choice1 + " " + choice2);
+                
+/*bin2dec*/     if (choice1==0 && choice2==0)
+                {
+                    String newBinary = pane.showInputDialog("Enter your binary number:");
+                    int newDecimal = toDec.fromBinary(newBinary);
+                    System.out.println(newDecimal);
+                }
+/*bin2hex*/     if (choice1==0 && choice2==1)
+                {
+                }
+
+/*dec2bin*/     if (choice1==1 && choice2==0)
+                {
+                    int newDec=0;
+                    do
+                    {
+                        if (newDec >= 65536)
+                            newDec = Integer.parseInt(pane.showInputDialog("That number is too large to be computed.\nTry again. (<65,536)"));
+                        else if (newDec==0)
+                            newDec = Integer.parseInt(pane.showInputDialog("Enter your decimal number (<65,536):"));
+                        
+                    } while (newDec >= 65536);
+                    String newBin = toBin.fromDec(newDec);
+                    System.out.println(newBin);
+                }
+
+/*dec2hex*/     if (choice1==1 && choice2==1)
+                {
+                    int newDec = Integer.parseInt(pane.showInputDialog("Enter your decimal number (<1048576):"));
+                    String newHex = toHex.fromDec(newDec);
+                    System.out.println(newHex);
+                }
+/*hex2dec*/     if (choice1==2 && choice2==0)
+                {
+                    String newHex = pane.showInputDialog("Enter your Hex value:");
+                    int newDec = toDec.fromHexadecimal(newHex);
+                    System.out.println(newDec);
+                }
+/*hex2bin*/     if (choice1==2 && choice2==1)
+                {
+                    String newHex = pane.showInputDialog("Enter your Hexadecimal value:");
+                    String newBin = toBin.fromHex(newHex);
+                    System.out.println(newBin);
+                }
+
+
+    }    
+}
