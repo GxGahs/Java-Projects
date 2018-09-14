@@ -1,0 +1,49 @@
+
+package converterwithclasses;
+
+public class toHexadecimal
+{
+    final private char[] hexSet = {'0','1','2','3','4','5','6','7','8','9','A','B','C','D','E','F'};
+    private String newHex = "";
+    private int multiple=0;
+    public String fromDec (int original)
+    {
+        for (int i=8;i>=0;i--)
+        {
+            if (original == 0)
+                newHex += "0";
+            else if (original-Math.pow(16,i)>=0)
+            {
+                multiple = (int)(original/Math.pow(16,i));
+                newHex += hexSet[multiple];
+                original = original - (int)(multiple*Math.pow(16,i));
+            }
+            else
+                newHex += "0";
+        }
+        if (newHex.substring(0,1).equals("0"))
+        {
+            do
+            {
+                newHex = newHex.substring(1,newHex.length());
+            } while ((newHex.substring(0,1).equals("0")));
+        }
+        return newHex;
+    }
+    
+    public String fromBin (String original)
+    {
+        int newDec = 0;
+        while (original.length()%4 != 0)
+            original = "0" + original;
+        for (int i=0; i < original.length()%4; i++)
+        {
+            for (int j=0; j <4; j++)
+            {
+                newDec += original.charAt((4*i)+j)*(Math.pow(2,4-j));
+            }
+            
+        }
+        
+    }
+}
