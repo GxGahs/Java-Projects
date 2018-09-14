@@ -1,0 +1,39 @@
+
+package converterwithclasses;
+import javax.swing.JOptionPane;
+
+public class toDecimal
+{
+    private int newDecimal;
+    
+    public int fromBinary (String original)
+    {
+        for (int i=0; i<original.length();i++)
+        {
+            if (Integer.parseInt(original.substring(i, i+1))==1 || Integer.parseInt(original.substring(i, i+1))==0)
+            {
+                newDecimal += Integer.parseInt(original.substring(i, i+1))*((int)Math.pow(2, (original.length()-i-1)));
+            }
+            else
+            {
+                JOptionPane.showMessageDialog(null,"That is not a binary number.");
+            }
+        }
+        return newDecimal;
+    }
+    
+    public int fromHexadecimal (String original)
+    {
+        for (int i=0; i <original.length();i++)
+        {
+            
+            if (original.charAt(i)>64 && original.charAt(i) < 91)
+                newDecimal += ((Character.getNumericValue(original.charAt(i)))*Math.pow(16,original.length()-i-1));
+                
+            else if ((Character.getNumericValue(original.charAt(i)))>=0 && (Character.getNumericValue(original.charAt(i)))<10)
+                newDecimal += (Character.getNumericValue(original.charAt(i)))*((Math.pow(16,original.length() - i-1)));
+            
+        }
+        return newDecimal;
+    }
+}
