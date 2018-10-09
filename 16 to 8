@@ -1,0 +1,34 @@
+{
+        String input = "8675309343443342", last="", seed = "";
+        int a, b;
+        int c;
+        //              0123456789123456
+        
+        for (int j = 0; j < 8; j ++)
+        {
+            a = Integer.parseInt(input.substring(j*2,j*2+1));
+            b = Integer.parseInt(input.substring(j*2+1,j*2+2));
+            //sets a and b to iteration of i for input
+            //where input = abababababababab; 8 sets of ab
+            
+            System.out.println(a + " " + b);
+            
+            c= (int)Math.pow(a,b);
+            if (c==0 || c==1)
+                c = (int)(Math.pow(b,a));
+            last = Integer.toString(c);
+            
+            System.out.println(last);
+            
+            last = last.substring(last.length()-1);
+            //creates one digit number from a and b
+            //by taking the last digit of a^b
+            
+            seed += last;
+            //adds last digit to seed
+        }
+        
+        System.out.println(seed);
+        
+        
+     }
