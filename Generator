@@ -3,8 +3,9 @@ public class Generator
 	private String givenSeed,modSeed16,modSeed8; 
         
         
-        public static void genBiome(String input)
+        public void genBiome()
         {
+	    String input = modSeed8;
             String[] biomeName = {"Taiga   ","Forest  ", "River   ", "Desert  ", "Mesa    ", "Savanna ", "Plains  ", "Mountain ", "Ocean   ", "Swamp   "};
         
             
@@ -18,27 +19,27 @@ public class Generator
         
         }
         
-        
-        
-        
-        
-        
-        
-        
-        
+      
 	public Generator(String seed)
 	{
 		givenSeed = seed;
+		modSeed16 = Generator.toSixteen(givenSeed);
+		modSeed8 = Generator.toEight(modSeed16);
+		
 	}
+	
+	//constructor
+	
+	
 	public String toRaw()
         {
             return givenSeed;
             
         }
-	public String toSixteen()
+	public static String toSixteen(String input)
 	{
-            String input,seed = "";
-            input = givenSeed;
+            String seed = "";
+            
 		int newInt,startVal = 8;
 		
 		if (input.length() < 8)
@@ -78,9 +79,9 @@ public class Generator
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////	
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////	
 	
-	public String toEight()
+	public static String toEight(String input)
 	{
-            String input = modSeed16;
+            
 	    String last = "", seed = "";
 	    int a, b;
 	    int c;
