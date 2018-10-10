@@ -1,0 +1,36 @@
+public static void main(String[] args) 
+	{
+            int[] count = {0,0,0,0,0,0,0,0,0,0};
+                /*Generator newSeed = new Generator("41232341234234534676970588468562135");
+		String input ="534252345664578921345";
+		
+                System.out.println(Generator.toEight(newSeed.toSixteen()));*/
+            
+            String newSeed = "",letter;
+            for (int i = 0; i < 1000; i++)
+            {
+                newSeed = "";
+                for (int j = 0; j < 32; j++)
+                {
+                    letter = Integer.toString((int)(Math.random()*10));
+                    newSeed += letter;
+                }
+                
+                newSeed = Generator.toEight(Generator.toSixteen(newSeed));
+                
+                for (int j = 0; j < 8; j++)
+                {
+                    for (int k = 0; k < 10; k++)
+                    {
+                        if (Integer.parseInt(newSeed.substring(j,j+1)) == k)
+                        {
+                            count[k]++;
+                        }
+                        
+                    }
+                }
+                
+            }
+            for (int i = 0; i < 10; i++)
+		System.out.println(count[i]);
+	}
