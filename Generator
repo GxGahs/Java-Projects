@@ -1,20 +1,85 @@
 public class Generator 
 {
-    private int seed;
+	private String givenSeed; 
+	public Generator(String seed)
+	{
+		givenSeed = seed;
+	}
+	
+	public static String toSixteen(String input)
+	{
+		int newInt,startVal = 8;
+		
+		if (input.length() < 8)
+			return "Invalid Seed.";
+		if (input.length() > 32)
+			input = input.substring(0, 33);
+		//check if seed is less than 8, return invalid
+		//check if seed is longer than 32, chop off end
+		
+		
+		while (input.length() != 16)
+		{
+			if (input.length() < 16)
+			{
+				newInt = Integer.parseInt(input.substring(input.length()-1))*Integer.parseInt(input.substring(3,4));				
+				input += Integer.toString(newInt).substring(Integer.toString(newInt).length()-1);
+				//adds the last digit of the number given by the last digit of 
+				//input times the 4th digit of input
+				
+				//System.out.println(input);
+			}
+			
+			else
+			{
+				input = input.substring(0,startVal) + input.substring(startVal+4);
+				//System.out.println(input);
+				
+			}
+			//takes out 4 digits from inside the input
+		}
+		//adds or subtracts digits from the input if it isn't of length 16
+		
+		return input;
+	}
+	
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////	
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////	
+	
+	public static String toEight(String input)
+	{
+	    String last = "", seed = "";
+	    int a, b;
+	    int c;
+	  
+	    if (input.equals("Invalid Seed."))
+	    	return "Invalid Seed.";
+	    for (int j = 0; j < 8; j ++)
+	    {
+	        a = Integer.parseInt(input.substring(j*2,j*2+1));
+	        b = Integer.parseInt(input.substring(j*2+1,j*2+2));
+	        //sets a and b to iteration of i for input
+	        //where input = abababababababab; 8 sets of ab
+	        
+	        //System.out.println(a + " " + b);
+	        
+	        c= (int)Math.pow(a,b);
+	        if (c==0 || c==1)
+	            c = (int)(Math.pow(b,a));
+	        last = Integer.toString(c);
+	        
+	        //System.out.println(last); checks val of last which is b^a
+	        
+	        last = last.substring(last.length()-1);
+	        //creates one digit number from a and b
+	        //by taking the last digit of a^b
+	        
+	        seed += last;
+	        //adds last digit to seed
+    	}
     
-    public Generator(double givenSeed)
-    {
-        if (Double.toString(givenSeed).length() > 32)
-            givenSeed = Double.parseDouble(Double.toString(givenSeed).substring(0,32));
-        else
-        {
-            while (Double.toString(givenSeed).length() > 32)
-            {
-                givenSeed *= Math.pow(87,);
-            }
-        }
-        
-        
-    }
+    //System.out.println(seed);
+    return seed;
     
+	}
 }
