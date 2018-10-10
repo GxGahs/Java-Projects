@@ -1,27 +1,31 @@
-public static void main(String []args)
-    {
-    int[] numbers = {0,0,0,0,0,0,0,0,0,0};
-    String last = "";
-    for (int i = 0; i < 10; i++)
-        {
-            for (int j = 0; j < 10; j++)
-            {
-                
-                last = Integer.toString((int)(Math.pow(i,j)));
-                //if (last.length() > 4)
-                 //last = last.substring(last.length()-3,last.length()-2);
-                //else
-                    last = last.substring(last.length()-1);
-                    for (int k=0; k<10; k++)
-                    {
-                        if (last.equals(Integer.toString(k)))
-                            numbers[k]++;
-                    }
-                System.out.print(last);
-            }
-            System.out.println();
-        }
-    
-    for (int g=0; g<10; g++)
-        System.out.println(numbers[g]);
-    }
+public static void main(String[] args) 
+	{
+		int through;
+		int[] numbers = {0,0,0,0,0,0,0,0,0,0};
+	    String last = "";
+	    for (int i = 0; i < 10; i++)
+	        {
+	            for (int j = 0; j < 10; j++)
+	            {
+	            	
+	                through = (int)(Math.pow(j,i));
+	                if (Integer.toString(through).substring(Integer.toString(through).length()-1).equals("1"))
+	                	through = (int)Math.pow(j+4,i+6)*through;
+	               
+	                
+	                last = Integer.toString(through);
+	             
+	                    last = last.substring(last.length()-1);
+	                    for (int k=0; k<10; k++)
+	                    {
+	                        if (last.equals(Integer.toString(k)))
+	                            numbers[k]++;
+	                    }
+	                System.out.print(last);
+	            }
+	            System.out.println();
+	        }
+	    
+	    for (int g=0; g<10; g++)
+	        System.out.println(numbers[g]);
+	}
