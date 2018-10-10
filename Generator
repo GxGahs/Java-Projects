@@ -1,13 +1,44 @@
 public class Generator 
 {
-	private String givenSeed; 
+	private String givenSeed,modSeed; 
+        
+        
+        public static void genBiome(String input)
+        {
+            String[] biomeName = {"Taiga   ","Forest  ", "River   ", "Desert  ", "Mesa    ", "Savanna ", "Plains  ", "Mountain ", "Ocean   ", "Swamp   "};
+        
+            
+            int biome;
+            
+            for (int i = 0; i < 8; i++)
+            {
+                biome = Integer.parseInt(input.substring(i,i+1));
+                System.out.print("|" + biomeName[biome]);
+            }
+        
+        }
+        
+        
+        
+        
+        
+        
+        
+        
+        
 	public Generator(String seed)
 	{
 		givenSeed = seed;
 	}
-	
-	public static String toSixteen(String input)
+	public String toRaw()
+        {
+            return givenSeed;
+            
+        }
+	public String toSixteen()
 	{
+            String input;
+            input = givenSeed;
 		int newInt,startVal = 8;
 		
 		if (input.length() < 8)
@@ -39,15 +70,16 @@ public class Generator
 			//takes out 4 digits from inside the input
 		}
 		//adds or subtracts digits from the input if it isn't of length 16
-		
+		modSeed = input;
 		return input;
 	}
 	
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////	
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////	
 	
-	public static String toEight(String input)
+	public String toEight()
 	{
+            String input = modSeed;
 	    String last = "", seed = "";
 	    int a, b;
 	    int c;
@@ -76,10 +108,15 @@ public class Generator
 	        
 	        seed += last;
 	        //adds last digit to seed
-    	}
+            }   
     
     //System.out.println(seed);
     return seed;
     
 	}
+        
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////        
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        
+
 }
