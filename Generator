@@ -2,6 +2,12 @@ public class Generator
 {
 	private String givenSeed,modSeed16,modSeed8; 
         
+        public Generator(String seed)
+	{
+		givenSeed = seed;
+		modSeed16 = Generator.toSixteen(givenSeed);
+		modSeed8 = Generator.toEight(modSeed16);	
+	}
         
         public void genBiome()
         {
@@ -18,23 +24,13 @@ public class Generator
             }
         
         }
+	
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         
-      
-	public Generator(String seed)
-	{
-		givenSeed = seed;
-		modSeed16 = Generator.toSixteen(givenSeed);
-		modSeed8 = Generator.toEight(modSeed16);
-		
-	}
-	
-	//constructor
-	
-	
-	public String toRaw()
+	public void getSeed()
         {
-            return givenSeed;
-            
+            System.out.println(givenSeed + "\n" + modSeed16 + "\n" + modSeed8);
         }
 	public static String toSixteen(String input)
 	{
@@ -71,7 +67,7 @@ public class Generator
 			//takes out 4 digits from inside the input
 		}
 		//adds or subtracts digits from the input if it isn't of length 16
-		modSeed16 = input;
+		
 		seed = input;
 		return seed;
 	}
@@ -111,7 +107,7 @@ public class Generator
 	        seed += last;
 	        //adds last digit to seed
             }   
-	    modSeed8 = seed;
+	    
 	    //System.out.println(seed);
 	    return seed;
     
