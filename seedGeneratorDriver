@@ -13,7 +13,7 @@ public class Driver
         }
         Generator newSeed = new Generator(seed);
         
-        newSeed.toEight(newSeed.toSixteen());
+        newSeed.genBiome();
         
         
         
