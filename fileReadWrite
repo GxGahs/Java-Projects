@@ -1,0 +1,63 @@
+package filereadwrite;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.BufferedReader;
+import java.io.PrintWriter;
+import java.io.IOException;
+import java.util.ArrayList;
+public class FileReadWrite {
+    
+    public static void main(String[] args) throws IOException {
+        
+        Parameters file = new Parameters();
+        BufferedReader inputStream = null;
+        
+        
+        try {
+            inputStream = new BufferedReader(new FileReader("input.txt"));
+            
+            String s;
+            int i=0;
+            
+            while ((s = inputStream.readLine()) != null) {
+                file.list.add(s);
+                        i++;
+            }
+        } finally {
+            if (inputStream != null) {
+                inputStream.close();
+            }
+        }
+        
+        file.getLines();
+    }
+    
+}
+
+
+
+
+class Parameters
+{
+    ArrayList list = new ArrayList();
+    String[] lines = {"","",""};
+    public Parameters()
+    {
+        
+    }
+    
+    public void getLines()
+    {
+        
+        int i=0;
+        try {
+            while (true) {
+                System.out.println(list.get(i));
+                i++;
+            }
+        } catch (IndexOutOfBoundsException e) {
+            System.out.println("***END OF FILE***");
+            
+        }
+    }
+}
