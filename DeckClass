@@ -1,0 +1,75 @@
+
+package deckclass;
+
+/**
+ *
+ * @author Veith.J142
+ */
+public class Deck 
+{
+    private Card[] deckOf;
+    
+    
+    
+    public Deck()
+    {
+        deckOf = new Card[52];
+        for (int i = 0; i < 13; i++)
+        {
+            for (int j = 0; j < 4; j++)
+            {
+                deckOf[i*4+j] = new Card(i,j);
+            }
+        }
+    }
+    
+    
+    public void toStringj()
+    {
+        for (int i = 0; i < 52; i++)
+            System.out.println(deckOf[i].getCard());
+    }
+    
+    
+    class Card
+    {
+        private int value;
+        String suit,shownValue;
+        private int[] cardValues = {1,2,3,4,5,6,7,8,9,10,11,12,13};
+        private String[] suits = {"Hearts","Diamonds","Clubs","Spades"};
+        private String[] shownValues = {"A","2","3","4","5","6","7","8","9","10","J","Q","K"};
+
+        public Card()
+        {
+            value = cardValues[((int)(Math.random()*13))];
+            suit = suits[(int)(Math.random()*4)];
+            shownValue = shownValues[value-1];
+        }
+        public Card(int int1, int int2)
+        {
+            value = cardValues[int1];
+            suit = suits[int2];
+            shownValue = shownValues[value-1];
+        }
+        public String getCard()
+        {
+            return shownValue + " of " + suit;
+        }
+        public int getValue()
+        {
+            return value;
+        }
+
+        public int compareTo(Card o)
+        {
+
+
+            if (value - o.value < 0)
+                return -1;
+            else if (value - o.value > 0)
+                return 1;
+            else return 0;
+        }
+    }
+}
+
