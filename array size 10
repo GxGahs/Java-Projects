@@ -1,0 +1,7 @@
+//Hi Guys =D Today I'm going
+//To show you how to make an
+//array of size 10 !!!
+
+int[] array = new int[10];
+
+//nice!
