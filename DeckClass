@@ -1,36 +1,81 @@
 
-package deckclass;
-
-/**
- *
- * @author Veith.J142
- */
 public class Deck 
 {
-    private Card[] deckOf;
+    private Card[] deckOfCards;
     
     
     
     public Deck()
     {
-        deckOf = new Card[52];
+        deckOfCards = new Card[52];
         for (int i = 0; i < 13; i++)
         {
             for (int j = 0; j < 4; j++)
             {
-                deckOf[i*4+j] = new Card(i,j);
+                deckOfCards[i*4+j] = new Card(i,j);
             }
         }
     }
     
     
-    public void toStringj()
+    public String toString()
     {
+    	String out = "";
         for (int i = 0; i < 52; i++)
-            System.out.println(deckOf[i].getCard());
+            out += (deckOfCards[i].getCard()) + "\n";
+        return out;
+    }
+    
+    public void riffleShuffle(int repeat)
+    {
+    	for (int j = 0; j < repeat; j++)
+    	{
+	    	Card[] tempArray = new Card[52];
+	    	for (int i = 0; i < 52; i++)
+	    	{
+	    		if (i%2==0)
+	    			tempArray[i] = deckOfCards[i/2];
+	    		else
+	    			tempArray[i] = deckOfCards[26+(i-1)/2];
+	    	}
+	    	deckOfCards = tempArray;
+    	}
+    }
+    
+    public void randomReplaceShuffle(int repeat)
+    {
+    	for (int i = 0; i < repeat; i++)
+    	{
+    		 int rand1 = (int)(Math.random()*52),rand2 = (int)(Math.random()*52);
+    		 while (rand2 == rand1)
+    			 rand2 = (int)(Math.random()*52);
+    		 Card tempCard;
+    		 tempCard = deckOfCards[rand1];
+    		 deckOfCards[rand1] = deckOfCards[rand2];
+    		 deckOfCards[rand2] = tempCard;
+    	}
+    }
+    
+    public void multiShuffle(int doRep, int doRiff, int repeat)
+    {
+    	for (int i = 0; i < repeat; i++)
+    	{
+    			randomReplaceShuffle(doRep);
+    			riffleShuffle(doRiff);
+    	}
+    }
+    
+    public void multiShuffle()
+    {
+    	for (int i = 0; i < 5; i++)
+    	{
+    			randomReplaceShuffle(10);
+    			riffleShuffle(2);
+    	}
     }
     
     
+    // INNER CLASS CARD
     class Card
     {
         private int value;
@@ -45,16 +90,19 @@ public class Deck
             suit = suits[(int)(Math.random()*4)];
             shownValue = shownValues[value-1];
         }
+        
         public Card(int int1, int int2)
         {
             value = cardValues[int1];
             suit = suits[int2];
             shownValue = shownValues[value-1];
         }
+        
         public String getCard()
         {
             return shownValue + " of " + suit;
         }
+        
         public int getValue()
         {
             return value;
@@ -72,4 +120,3 @@ public class Deck
         }
     }
 }
-
