@@ -1,0 +1,65 @@
+public class HelloWorld{
+
+     public static void main(String []args){
+        
+        Beast newBoy = new Beast();
+        newBoy.getName();
+        newBoy.getStats();
+        newBoy.getMoves();
+        
+        
+        
+        
+     }
+}
+class Beast
+{
+    private String name;
+    private int[] stats = new int[6];
+    private final String[] statNames = {"HtP","Atk","Def","Spe","SpA","SpD"};
+    private final String[] moveNames1 = {"Ice","Fire","Electric","Dark","Water","Grass"};
+    private final String[] moveNames2 = {"Blast","Punch","Crunch","Beam","Kick"};
+    private String[] moves = new String[4];
+    public Beast()
+    {
+        name = (int)(Math.random()*(9000)+(1000)) + "";
+        stats[0] = (int)(Math.random()*26+75);
+        for (int i = 1; i < 6; i++)
+        {
+            stats[i] = (int)(Math.random()*11+10);
+        }
+        
+        for (int i = 0; i < 4; i++)
+        {
+            int p1 = (int)(Math.random()*6), p2 = (int)(Math.random()*5);
+            moves[i] = moveNames1[p1] + " " + moveNames2[p2];
+        }
+    }
+    public void getName()
+    {
+        System.out.println(name);
+    }
+    public void getStats()
+    {
+        for (int i = 0; i < 6; i++)
+            System.out.print(statNames[i] + ": " + stats[i] + "\n");
+    }
+    public void getMoves()
+    {
+        for (int i = 0; i < 3; i++)
+            System.out.print(moves[i] + ", ");
+        System.out.println(moves[3]);
+    }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}
