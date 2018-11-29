@@ -5,14 +5,15 @@
  */
 package monsters;
 
+
 public class Monsters {
 
      public static void main(String []args){
         
-        String[] moves = {"Burning Cock Thrust","Hellfire Nut", "Throb","Quick Attack"};
+        Move[] moves = new Move[4];
         int stats[] = {150,45,25,55,65,25};
-        Beast newBoy = new Beast("Infernut",stats,moves);
-        newBoy.getAll();
+       // Beast newBoy = new Beast("Infernut",stats,moves);
+        //newBoy.getAll();
         
         Beast newBeast = new Beast();
          System.out.println("\n\n");
@@ -30,7 +31,7 @@ class Beast
     private final String[] statNames = {"HtP","Atk","Def","Spe","SpA","SpD"};
     private final String[] moveNames1 = {"Ice","Fire","Electric","Dark","Water","Grass"};
     private final String[] moveNames2 = {"Blast","Punch","Crunch","Beam","Kick"};
-    private String[] moves = new String[4];
+    private Move[] moves = new Move[4];
         
     public Beast()
     {
@@ -44,11 +45,11 @@ class Beast
         for (int i = 0; i < 4; i++)
         {
             int p1 = (int)(Math.random()*moveNames1.length), p2 = (int)(Math.random()*moveNames2.length);
-            moves[i] = moveNames1[p1] + " " + moveNames2[p2];
+            moves[i] = new Move(moveNames1[p1] + " " + moveNames2[p2],75);
         }
     }
 ////////////////////////////////////////////////////////////////////////////////
-    public Beast(String name, int[] stats, String[] moves)
+    public Beast(String name, int[] stats, Move[] moves)
     {
         this.name = name;
         try {
@@ -77,8 +78,8 @@ class Beast
     public void getMoves()
     {
         for (int i = 0; i < 3; i++)
-            System.out.print(moves[i] + ", ");
-        System.out.println(moves[3]);
+            System.out.print(moves[i].getMove() + ", ");
+        System.out.println(moves[3].getMove());
     }
 ////////////////////////////////////////////////////////////////////////////////
     public void getAll()
@@ -87,22 +88,28 @@ class Beast
         getStats();
         getMoves();
     }
-    
-    class Move
+}
+class Move
+{
+    private String moveName;
+    private int power;
+    public Move()
     {
-        private String moveName;
-        private int power;
-        
-        public 
+        moveName = "???";
+        power = 50;
     }
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
+    public Move(String moveName, int power)
+    {
+        this.moveName = moveName;
+        this.power = power;
+    }
+    public Move(String moveName)
+    {
+        this.moveName = moveName;
+        power = (int)(Math.random()*90+10);
+    }
+    public String getMove()
+    {
+        return moveName;
+    }
 }
