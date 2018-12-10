@@ -1,0 +1,90 @@
+/******************************************************************************
+
+                            Online Java Compiler.
+                Code, Compile, Run and Debug java program online.
+Write your code in this editor and press "Run" button to execute it.
+
+*******************************************************************************/
+
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.ArrayList;
+public class Main{
+
+     public static void main(String []args){
+        Beast god = new Beast();
+        god.setName("std.txt");
+        
+        /*try {
+            fr = new FileReader("std.txt");
+            br = new BufferedReader(fr);
+            String str;
+            
+            while ((str = br.readLine()) != null)
+                try {
+                    bruh.add(Integer.parseInt(str));
+                } catch (NumberFormatException e) {
+                    bruh.add(str);
+                }
+                
+            
+            
+            
+        } catch (IOException e) {} 
+        finally {
+            try {
+            if (br != null)
+				br.close();
+
+			if (fr != null)
+				fr.close();
+            } catch (IOException e) {}
+        }*/
+        
+        god.getName();
+        
+     }
+}
+
+class Beast
+{
+    BufferedReader br = null;
+        FileReader fr = null;
+        
+    int[] stats = new int[6];
+    String name;
+    
+    public Beast ()
+    {
+        
+    }
+    public void setName(String input)
+    {
+        
+        try {
+            fr = new FileReader(input);
+            br = new BufferedReader(fr);
+            
+            name = br.readLine();
+            
+        } catch (IOException e) {} 
+        finally {
+            try {
+            if (br != null)
+				br.close();
+
+			if (fr != null)
+				fr.close();
+            } catch (IOException e) {}
+        }
+    }
+    public void getName()
+    {
+        System.out.println(name);
+    }
+}
+
+
+
+
