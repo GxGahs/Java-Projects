@@ -1,0 +1,72 @@
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.ArrayList;
+
+public class Beast
+{
+    BufferedReader br = null;
+        FileReader fr = null;
+        
+    int[] stats = new int[6];
+    String name;
+    
+    public Beast (String input)
+    {
+        setName(input);
+        setStats(input);
+    }
+    public void setName(String input)
+    { 
+        try {
+            fr = new FileReader(input);
+            br = new BufferedReader(fr);
+            
+            name = br.readLine();
+            
+        } catch (IOException e) {} 
+        finally {
+            try {
+            if (br != null)
+				br.close();
+
+			if (fr != null)
+				fr.close();
+            } catch (IOException e) {}
+        }
+    }
+    public void getName()
+    {
+        System.out.println(name);
+    }
+    public void setStats(String input)
+    {
+        try {
+            fr = new FileReader(input);
+            br = new BufferedReader(fr);
+
+            br.readLine();
+            for (int i = 0; i < 6; i++) {
+                try {
+                stats[i] = Integer.parseInt(br.readLine());
+                } catch (NumberFormatException | IOException e) {
+                    for (int j = 0; j < 6; j++)
+                        stats[j] = 0;
+                    name = "?????";
+                }
+            }
+        } catch (IOException e) {}
+    }
+    public void getStats()
+    {
+        String[] statNames = {"HP","ATK","DEF","SPE","SpD","SpA"};
+        for (int i = 0; i < 6; i++)
+            System.out.println(statNames[i] + ": " + stats[i]);
+    }
+    public void getAll()
+    {
+        getName();
+        getStats();
+    }
+}
+
