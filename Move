@@ -1,0 +1,45 @@
+class Move
+{
+    BufferedReader br = null;
+        FileReader fr = null;
+    String name;
+    int power;
+    
+    public Move ()
+    {
+        
+    }
+    
+    public void setMoves(String input)
+    {
+        fr = new FileReader(input);
+        br = new BufferedReader(fr);
+        int[][] IDPow = new int[4][2];
+        String mAS; //moveAsString
+        try {
+            for (int i = 0; i < 7; i++)
+                br.readLine();
+                
+            for (int i = 0; i < 4; i++) {
+                mAS = br.readline();
+                if (mAS = null) {
+                    move[i][0] = -1;
+                    move[i][2] = 0;
+                    continue;
+                }
+                
+                move[i][0] = Integer.parseInt(mAS.substring(0,mAS.indexOf(' ')));
+                move[i][1] = Integer.parseInt(mAS.substring(mas.indexOf(' ')));
+            } catch (IOException e) {}
+            finally {
+            try {
+            if (br != null)
+				br.close();
+
+			if (fr != null)
+				fr.close();
+            } catch (IOException e) {}
+        }
+        }
+    }
+}
