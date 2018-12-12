@@ -8,13 +8,15 @@ public class Beast
     BufferedReader br = null;
         FileReader fr = null;
         
-    int[] stats = new int[6];
-    String name;
+    private int[] stats = new int[6];
+    private String name;
+    private Move[] moveset = new Move[4];
     
     public Beast (String input)
     {
         setName(input);
         setStats(input);
+        setMoves(input);
     }
     public void setName(String input)
     { 
@@ -55,6 +57,7 @@ public class Beast
                     name = "?????";
                 }
             }
+            
         } catch (IOException e) {}
     }
     public void getStats()
@@ -64,9 +67,23 @@ public class Beast
             System.out.println(statNames[i] + ": " + stats[i]);
     }
     public void getAll()
+
     {
         getName();
         getStats();
+        getMoves();
     }
+    public void setMoves(String input)
+    {
+    	for (int i = 0; i < 4; i++)
+    	{
+    		moveset[i].setMove(i, input);
+    	}
+    }
+    public void getMoves()
+    {
+    	for (int i = 0; i < 4; i++)
+    		moveset[i].getMove();
+    }
+    
 }
-
