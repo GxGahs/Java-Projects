@@ -1,0 +1,62 @@
+import java.util.ArrayList;
+class Dragon {
+    
+    private String name;
+    private ArrayList<String> element;
+    private int level;
+    
+    public Dragon()
+    {
+        name = "Dragon";
+        element = new ArrayList<String>();
+        element.add("?????");
+        level = 0;
+        
+    }
+    
+    public Dragon(String name, String[] element, int level)
+    {
+        setName(name);
+        setElement(element);
+        setLevel(level);
+    }
+    
+    public void setName(String name)
+    {
+        this.name = name;
+    }
+    public void setElement(String[] element)
+    {
+         
+        ArrayList newArr = new ArrayList<String>();
+        for (String newEle : element)
+            newArr.add(newEle);
+            this.element = newArr;
+    }
+    public void setLevel(int level)
+    {
+        this.level = level;
+    }
+    public String getName()
+    {
+        return name;
+    }
+    public String getElement()
+    {
+        String allEle = "";
+        
+        for (int i = 0; i < element.size(); i++) {
+            
+            allEle += element.get(i);
+            if (i+1!=element.size())
+                allEle += ",  ";
+        }
+        
+        return allEle;
+    }
+    public int getLevel()
+    {
+        return level;
+    }
+    
+}
