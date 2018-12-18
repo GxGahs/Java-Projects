@@ -1,0 +1,28 @@
+/******************************************************************************
+
+                            Online Java Compiler.
+                Code, Compile, Run and Debug java program online.
+Write your code in this editor and press "Run" button to execute it.
+
+*******************************************************************************/
+import java.util.ArrayList;
+public class Main
+{
+	public static void main(String[] args) {
+        
+        String[] elements1 = {"Fire","Plant"},
+                 elements2 = {"Lightning", "Water"},
+                 elements3 = {"Sun","Moon"};
+        Dragon John = new Dragon("Fire Dragon",elements1,10);
+        Dragon Joe = new Dragon("Plant Dragon",elements2,5);
+        Dragon Jeff = new Dragon("Lightning Dragon",elements3,20);
+        ArrayList<Dragon> drags = new ArrayList<Dragon>();
+        drags.add(John);
+        drags.add(Joe);
+        drags.add(Jeff);
+        Habitat newHab = new Habitat("Omnitat",drags);
+        newHab.getNameSize();
+        newHab.getDragons();
+        
+	}
+}
