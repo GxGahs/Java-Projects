@@ -1,0 +1,42 @@
+import java.util.ArrayList;
+class Habitat {
+    
+    private ArrayList<Dragon> dragons;
+    private String name;
+    
+    public Habitat()
+    {
+        name = "Habitat";
+        dragons = new ArrayList<Dragon>();
+    }
+    public Habitat(String name, ArrayList<Dragon> dragons)
+    {
+        this.name = name;
+        this.dragons = dragons;
+    }
+    
+    public void setName(String name)
+    {
+        this.name = name;
+    }
+    public void setDragons(ArrayList<Dragon> dragons)
+    {
+        this.dragons = dragons;
+    }
+    public void addDragon(Dragon newDrag)
+    {
+        dragons.add(newDrag);
+    }
+    public void getNameSize()
+    {
+        System.out.println(name + ", " + dragons.size());
+    }
+    public void getDragons()
+    {
+        for (int i = 0; i < dragons.size(); i++)
+            System.out.println(dragons.get(i).getName() + "; " +
+                               dragons.get(i).getElement() + "; Level: " +
+                               dragons.get(i).getLevel());
+    }
+    
+}
